@@ -57,6 +57,7 @@ public class Game extends Canvas implements Runnable {
         }catch(Exception e){
             e.printStackTrace();
         }
+        //Hello
     }
 
     public void run(){
