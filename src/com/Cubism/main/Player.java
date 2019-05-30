@@ -24,6 +24,8 @@ public class Player extends GameObject {
     public void tick() {
         if(velX != 0 || velY != 0){
             isMoving = true;
+        } else{
+            isMoving = false;
         }
 
         x = Game.clamp(x, 0, Game.WIDTH - pDim);

@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="Cubism:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Cubism_jar</output-path>
+    <root id="archive" name="Cubism.jar">
+      <element id="module-output" name="Cubism" />
+    </root>
+  </artifact>
+</component>

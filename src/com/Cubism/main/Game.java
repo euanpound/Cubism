@@ -18,6 +18,7 @@ public class Game extends Canvas implements Runnable {
     private Random r = new Random();
     private Handler handler;
     private HUD hud;
+    private Stage_Manager stage_manager;
 
     int Score = 0;
 
@@ -32,45 +33,13 @@ public class Game extends Canvas implements Runnable {
 
         hud = new HUD();
 
+        //Player
+        handler.addObject(new Player(Game.WIDTH / 2 - 16, Game.HEIGHT / 2 - 16, ID.Player, handler));
+
+        stage_manager = new Stage_Manager(handler);
 
         //Stage one of the game-play
-        stageOne();
-    }
-
-    public void stageOne(){
-        for (int i = 0; i < 5; i++) {
-            handler.addObject(new enemy_Idiot(r.nextInt(WIDTH - 32), r.nextInt(HEIGHT - 32), ID.Idiot, handler));
-        }
-        //Tracker
-        handler.addObject(new enemy_Tracker(r.nextInt(WIDTH - 32), r.nextInt(HEIGHT - 32), ID.Tracker, handler));
-
-        //Player
-        handler.addObject(new Player(WIDTH / 2 - 16, HEIGHT / 2 - 16, ID.Player, handler));
-
-        //Bar
-        handler.addObject(new enemy_Bar(0, 0, ID.Bar, handler));
-
-        //Beams
-        handler.addObject(new enemy_BlastHorizontal(0, r.nextInt(HEIGHT - 50) + 50, ID.Blaster, handler));
-        handler.addObject(new enemy_BlastVertical(r.nextInt(WIDTH - 50) + 50, 0, ID.Blaster, handler));
-
-    }
-
-    public void stageTwo(){
-        for(int i = 0; i < handler.object.size(); i ++){
-            GameObject tempObject = handler.object.get(i);
-            if(tempObject.getID() != ID.Player && tempObject.getID() != ID.Stage2_Blaster){
-                handler.removeObject(tempObject);
-            }
-            if (handler.object.size() == 1) {
-                if(tempObject.getID() == ID.Player){
-                    handler.addObject(new enemy_Stage2_BlastHorizontal(0, tempObject.getY(), ID.Stage2_Blaster, handler));
-                    handler.addObject(new enemy_Stage2_BlastVertical(tempObject.getX(), 0, ID.Stage2_Blaster, handler));
-                    gameStage++;
-                }
-            }
-        }
-
+        stage_manager.stageOne();
     }
 
     public synchronized void start(){
@@ -113,14 +82,10 @@ public class Game extends Canvas implements Runnable {
                 frames = 0;
             }
             if(HUD.HEALTH <= 0){
-                int x = JOptionPane.showOptionDialog(null, "Play again",
+                JOptionPane.showOptionDialog(null, "Play again",
                         "You Died",
                         JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
                 stop();
-            }
-            //If the player has passed ten bars go to stage two
-            if(gameStage == 5){
-                stageTwo();
             }
         }
         stop();
@@ -129,6 +94,7 @@ public class Game extends Canvas implements Runnable {
     private void tick(){
         handler.tick();
         hud.tick();
+        stage_manager.tick();
     }
 
     private void render(){

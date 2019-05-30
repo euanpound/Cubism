@@ -3,8 +3,8 @@ package com.Cubism.main;
 import javax.swing.*;
 import java.awt.*;
 
-public class deathWindow {
-    public deathWindow(int width, int height, String title, Game game){
+public class DeathWindow {
+    public DeathWindow(int width, int height, String title, Game game){
         JFrame frame = new JFrame(title);
 
         //frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
