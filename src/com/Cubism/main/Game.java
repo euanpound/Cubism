@@ -3,6 +3,7 @@ package com.Cubism.main;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
+import java.io.IOException;
 import java.util.Random;
 
 public class Game extends Canvas implements Runnable {
@@ -81,10 +82,19 @@ public class Game extends Canvas implements Runnable {
                 frames = 0;
             }
             if(HUD.HEALTH <= 0){
-                JOptionPane.showOptionDialog(null, "Play again",
-                        "You Died",
-                        JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
-                stop();
+                int input = JOptionPane.showOptionDialog(null, "Play again?", "You lost", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
+
+                if(input == JOptionPane.OK_OPTION)
+                {
+                    try {
+                        Runtime.getRuntime().exec("java -jar Cubism.jar");
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    System.exit(0);
+                } else if(input == JOptionPane.CANCEL_OPTION){
+                    System.exit(0);
+                }
             }
         }
         stop();

@@ -5,7 +5,7 @@ import java.awt.*;
 
 public class HUD {
 
-    public static int HEALTH = 10;
+    public static int HEALTH = 1;
 
     public void tick(){
 
