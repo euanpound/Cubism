@@ -1,11 +1,10 @@
 package com.Cubism.main;
 
-import javax.swing.*;
 import java.awt.*;
 
 public class HUD {
 
-    public static int HEALTH = 1;
+    public static int HEALTH = 10;
 
     public void tick(){
 

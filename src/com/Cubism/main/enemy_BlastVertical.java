@@ -44,7 +44,7 @@ public class enemy_BlastVertical extends GameObject {
 
     public Rectangle getBounds() {
         if (timer <= 0) {
-            return new Rectangle(0, y, Game.WIDTH, 25);
+            return new Rectangle(x, 0, 25, Game.HEIGHT);
         } else{
             return new Rectangle(0,0,0,0);
         }
