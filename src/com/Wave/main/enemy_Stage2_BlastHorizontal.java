@@ -68,7 +68,7 @@ public class enemy_Stage2_BlastHorizontal extends GameObject {
             for (int i = 0; i < handler.object.size(); i++) {
                 GameObject tempObject = handler.object.get(i);
                 if (tempObject.getID() == ID.Player) {
-                    handler.addObject(new enemy_Stage2_BlastHorizontal(0, tempObject.getY(), ID.Blaster, handler));
+                    handler.addObject(new enemy_Stage2_BlastHorizontal(0, tempObject.getY(), ID.Stage2_Blaster, handler));
                 }
             }
         }

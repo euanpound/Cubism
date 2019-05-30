@@ -7,5 +7,6 @@ public enum ID {
     Bar(),
     Blaster(),
     BlasterParticles(),
-    Tracker();
+    Tracker(),
+    Stage2_Blaster();
 }
