@@ -12,9 +12,8 @@ public class enemy_BlastHorizontalParticles extends enemy_BlastHorizontal {
 
     boolean oneTime = true;
 
-    public enemy_BlastHorizontalParticles(int x, int y, ID id, Handler handler, enemy_BlastHorizontal parent) {
+    public enemy_BlastHorizontalParticles(int x, int y, ID id, Handler handler) {
         super(x, y, id, handler);
-        this.parent = parent;
     }
 
 

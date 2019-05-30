@@ -39,29 +39,34 @@ public class Game extends Canvas implements Runnable {
 
     public void stageOne(){
         for (int i = 0; i < 5; i++) {
-            handler.addObject(new enemy_Idiot(r.nextInt(WIDTH - 32), r.nextInt(HEIGHT - 32), ID.Idiot, handler));
+            //handler.addObject(new enemy_Idiot(r.nextInt(WIDTH - 32), r.nextInt(HEIGHT - 32), ID.Idiot, handler));
         }
-        handler.addObject(new enemy_Tracker(r.nextInt(WIDTH - 32), r.nextInt(HEIGHT - 32), ID.Tracker, handler));
+        //Tracker
+        //handler.addObject(new enemy_Tracker(r.nextInt(WIDTH - 32), r.nextInt(HEIGHT - 32), ID.Tracker, handler));
+
+        //Player
         handler.addObject(new Player(WIDTH / 2 - 16, HEIGHT / 2 - 16, ID.Player, handler));
-        handler.addObject(new enemy_Bar(0, 0, ID.Bar, handler));
-        handler.addObject(new enemy_BlastHorizontal(0, r.nextInt(HEIGHT - 50) + 50, ID.Idiot, handler));
-        handler.addObject(new enemy_BlastHorizontal(0, r.nextInt(HEIGHT - 50) + 50, ID.Idiot, handler));
-        handler.addObject(new enemy_BlastVertical(r.nextInt(WIDTH - 50) + 50, 0, ID.Idiot, handler));
-        handler.addObject(new enemy_BlastVertical(r.nextInt(WIDTH - 50) + 50, 0, ID.Idiot, handler));
+
+        //Bar
+        //handler.addObject(new enemy_Bar(0, 0, ID.Bar, handler));
+
+        //Beams
+        //handler.addObject(new enemy_BlastHorizontal(0, r.nextInt(HEIGHT - 50) + 50, ID.Blaster, handler));
+        //handler.addObject(new enemy_BlastVertical(r.nextInt(WIDTH - 50) + 50, 0, ID.Blaster, handler));
+        stageTwo();
     }
 
     public void stageTwo(){
         for(int i = 0; i < handler.object.size(); i ++){
             GameObject tempObject = handler.object.get(i);
-            System.out.println(tempObject);
             if(tempObject.getID() != ID.Player){
                 handler.removeObject(tempObject);
             }
             if (handler.object.size() == 1) {
                 if(tempObject.getID() == ID.Player){
+                    handler.addObject(new enemy_Stage2_BlastHorizontal(0, tempObject.getY(), ID.Blaster, handler));
+                    handler.addObject(new enemy_Stage2_BlastVertical(tempObject.getX(), 0, ID.Blaster, handler));
                     gameStage++;
-                    //handler.addObject(new enemy_BlastVertical(tempObject.getX(), 0, ID.Idiot, handler));
-                    //handler.addObject(new enemy_BlastHorizontal(0, tempObject.getY(), ID.Idiot, handler));
                 }
             }
         }
@@ -115,7 +120,7 @@ public class Game extends Canvas implements Runnable {
             }
             //If the player has passed ten bars go to stage two
             if(gameStage == 1){
-                stageTwo();
+                //stageTwo();
             }
         }
         stop();

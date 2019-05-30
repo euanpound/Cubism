@@ -3,21 +3,21 @@ package com.Wave.main;
 import java.awt.*;
 import java.util.Random;
 
-public class enemy_BlastHorizontal extends GameObject {
+public class enemy_Stage2_BlastHorizontal extends GameObject {
 
     Handler handler;
     Random r = new Random();
-    int timer = 250;
+    int timer = 50;
     boolean warn = false;
     boolean released = false;
 
-    public enemy_BlastHorizontal(int x, int y, ID id, Handler handler) {
+    public enemy_Stage2_BlastHorizontal(int x, int y, ID id, Handler handler) {
         super(x, y, id);
         this.handler = handler;
-
     }
 
     public void tick() {
+        //System.out.println("Hello");
         if(timer == 0){
             handler.addObject(new enemy_BlastHorizontalParticles(x, y, ID.BlasterParticles, handler));
             timer--;
@@ -65,7 +65,12 @@ public class enemy_BlastHorizontal extends GameObject {
         }
         if(counter == 0){
             handler.removeObject(this);
-            handler.addObject(new enemy_BlastHorizontal(0, r.nextInt(Game.HEIGHT), ID.Idiot, handler));
+            for (int i = 0; i < handler.object.size(); i++) {
+                GameObject tempObject = handler.object.get(i);
+                if (tempObject.getID() == ID.Player) {
+                    handler.addObject(new enemy_Stage2_BlastHorizontal(0, tempObject.getY(), ID.Blaster, handler));
+                }
+            }
         }
     }
 }

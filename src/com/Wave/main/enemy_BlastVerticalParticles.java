@@ -12,9 +12,8 @@ public class enemy_BlastVerticalParticles extends enemy_BlastVertical {
 
     boolean oneTime = true;
 
-    public enemy_BlastVerticalParticles(int x, int y, ID id, Handler handler, enemy_BlastVertical parent) {
+    public enemy_BlastVerticalParticles(int x, int y, ID id, Handler handler) {
         super(x, y, id, handler);
-        this.parent = parent;
     }
 
 

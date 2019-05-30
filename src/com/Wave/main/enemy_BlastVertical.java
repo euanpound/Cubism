@@ -19,13 +19,9 @@ public class enemy_BlastVertical extends GameObject {
 
     public void tick() {
         if(timer == 0){
-            //for(int i = 0; i < 1000; i ++) {
-                //int RandW = r.nextInt(25) + x;
-                int RandH = r.nextInt(Game.HEIGHT);
-                handler.addObject(new enemy_BlastVerticalParticles(x, RandH, ID.BlasterParticles, handler, this));
-                timer--;
-                released = true;
-            //}
+            handler.addObject(new enemy_BlastVerticalParticles(x, y, ID.BlasterParticles, handler));
+            timer--;
+            released = true;
         } else if (timer % 50 == 0 && timer > 0){
             warn = true;
         } else if (timer % 10 == 0){
