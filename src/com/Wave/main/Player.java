@@ -61,18 +61,8 @@ public class Player extends GameObject {
         for(int i = 0; i < handler.object.size(); i++){
             GameObject tempObject = handler.object.get(i);
             //Collide with enemy
-            if(tempObject.getID() == (ID.Idiot)){
+            if(tempObject.getID() == (ID.Idiot) || tempObject.getID() == ID.Tracker || tempObject.getID() == ID.Bar || tempObject.getID() == ID.Blaster || tempObject.getID() == ID.Stage2_Blaster){
                 if(tempObject.getBounds().intersects(getBounds())) {
-                    HUD.HEALTH--;
-                    j--;
-                }
-            } else if(tempObject.getID() == ID.Tracker){
-                if(tempObject.getBounds().intersects(getBounds())){
-                    HUD.HEALTH--;
-                    j--;
-                }
-            } else if(tempObject.getID() == ID.Bar){
-                if(tempObject.getBounds().intersects(getBounds()) || tempObject.getBoundsR().intersects(getBounds())){
                     HUD.HEALTH--;
                     j--;
                 }

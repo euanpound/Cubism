@@ -7,7 +7,7 @@ public class enemy_Stage2_BlastVertical extends GameObject {
 
     Handler handler;
     Random r = new Random();
-    int timer = 50;
+    int timer = 50 - Game.gameStage;
     boolean warn = false;
     boolean released = false;
 
@@ -22,9 +22,9 @@ public class enemy_Stage2_BlastVertical extends GameObject {
             handler.addObject(new enemy_BlastVerticalParticles(x, y, ID.BlasterParticles, handler));
             timer--;
             released = true;
-        } else if (timer % 50 == 0 && timer > 0){
+        } else if (timer % 10 == 0 && timer > 0){
             warn = true;
-        } else if (timer % 10 == 0){
+        } else if (timer % 5 == 0){
             warn = false;
         }
         if(timer > 0){
@@ -64,6 +64,7 @@ public class enemy_Stage2_BlastVertical extends GameObject {
             }
         }
         if(counter == 0){
+            Game.gameStage++;
             handler.removeObject(this);
             for (int i = 0; i < handler.object.size(); i++) {
                 GameObject tempObject = handler.object.get(i);
