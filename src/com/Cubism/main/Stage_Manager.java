@@ -78,7 +78,8 @@ public class Stage_Manager {
         if(Game.gameStage == 5){
             stageTwo();
         }
-        if(Game.gameStage == 30){
+        if(Game.gameStage == 20){
+            allGone = false;
             stageThree();
         }
     }

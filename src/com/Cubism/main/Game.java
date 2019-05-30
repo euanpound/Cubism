@@ -32,11 +32,10 @@ public class Game extends Canvas implements Runnable {
         window = new Window(WIDTH, HEIGHT, "WAVE!", this);
 
         hud = new HUD();
+        stage_manager = new Stage_Manager(handler);
 
         //Player
         handler.addObject(new Player(Game.WIDTH / 2 - 16, Game.HEIGHT / 2 - 16, ID.Player, handler));
-
-        stage_manager = new Stage_Manager(handler);
 
         //Stage one of the game-play
         stage_manager.stageOne();
@@ -94,7 +93,11 @@ public class Game extends Canvas implements Runnable {
     private void tick(){
         handler.tick();
         hud.tick();
-        stage_manager.tick();
+        try {
+            stage_manager.tick();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void render(){
