@@ -1,4 +1,4 @@
-package com.Wave.main;
+package com.Cubism.main;
 
 import javax.swing.*;
 import java.awt.*;
@@ -22,7 +22,7 @@ public class Game extends Canvas implements Runnable {
     int Score = 0;
 
 
-    Window window;
+    com.Cubism.main.Window window;
 
     public Game(){
         handler = new Handler();

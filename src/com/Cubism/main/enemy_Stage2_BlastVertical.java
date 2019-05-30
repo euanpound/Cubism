@@ -1,30 +1,30 @@
-package com.Wave.main;
+package com.Cubism.main;
 
 import java.awt.*;
 import java.util.Random;
 
-public class enemy_BlastHorizontal extends GameObject {
+public class enemy_Stage2_BlastVertical extends GameObject {
 
     Handler handler;
     Random r = new Random();
-    int timer = 250;
+    int timer = 50 - Game.gameStage;
     boolean warn = false;
     boolean released = false;
 
-    public enemy_BlastHorizontal(int x, int y, ID id, Handler handler) {
+    public enemy_Stage2_BlastVertical(int x, int y, ID id, Handler handler) {
         super(x, y, id);
         this.handler = handler;
-
     }
 
     public void tick() {
+        //System.out.println("Hello");
         if(timer == 0){
-            handler.addObject(new enemy_BlastHorizontalParticles(x, y, ID.BlasterParticles, handler));
+            handler.addObject(new enemy_BlastVerticalParticles(x, y, ID.BlasterParticles, handler));
             timer--;
             released = true;
-        } else if (timer % 50 == 0 && timer > 0){
+        } else if (timer % 10 == 0 && timer > 0){
             warn = true;
-        } else if (timer % 10 == 0){
+        } else if (timer % 5 == 0){
             warn = false;
         }
         if(timer > 0){
@@ -38,7 +38,7 @@ public class enemy_BlastHorizontal extends GameObject {
     public void render(Graphics g) {
         if(warn){
             g.setColor(Color.RED);
-            g.fillRect(5, y, 20, 20);
+            g.fillRect(x, 5, 20, 20);
         }
     }
 
@@ -64,8 +64,14 @@ public class enemy_BlastHorizontal extends GameObject {
             }
         }
         if(counter == 0){
+            Game.gameStage++;
             handler.removeObject(this);
-            handler.addObject(new enemy_BlastHorizontal(0, r.nextInt(Game.HEIGHT), ID.Idiot, handler));
+            for (int i = 0; i < handler.object.size(); i++) {
+                GameObject tempObject = handler.object.get(i);
+                if (tempObject.getID() == ID.Player) {
+                    handler.addObject(new enemy_Stage2_BlastVertical(tempObject.getX(), 0, ID.Stage2_Blaster, handler));
+                }
+            }
         }
     }
 }

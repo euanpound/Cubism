@@ -1,4 +1,4 @@
-package com.Wave.main;
+package com.Cubism.main;
 
 import java.awt.*;
 import java.util.LinkedList;

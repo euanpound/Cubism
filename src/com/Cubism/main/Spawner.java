@@ -1,4 +1,4 @@
-package com.Wave.main;
+package com.Cubism.main;
 
 public class Spawner {
 

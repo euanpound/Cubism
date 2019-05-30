@@ -1,4 +1,4 @@
-package com.Wave.main;
+package com.Cubism.main;
 
 import java.awt.*;
 import java.util.Random;
@@ -36,7 +36,7 @@ public class enemy_Idiot extends GameObject{
     }
 
     public Rectangle getBounds(){
-            return new Rectangle(x, y, iDim, iDim);
+        return new Rectangle(x, y, iDim, iDim);
     }
 
     public Rectangle getBoundsR() {

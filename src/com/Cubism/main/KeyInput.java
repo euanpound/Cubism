@@ -1,4 +1,4 @@
-package com.Wave.main;
+package com.Cubism.main;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;

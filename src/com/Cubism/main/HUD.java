@@ -1,4 +1,4 @@
-package com.Wave.main;
+package com.Cubism.main;
 
 import javax.swing.*;
 import java.awt.*;
