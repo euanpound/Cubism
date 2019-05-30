@@ -20,6 +20,7 @@ public class enemy_Bar extends GameObject{
         y += velY;
 
         if(getY() > Game.HEIGHT){
+            Game.gameStage ++;
             handler.addObject(new enemy_Bar(0, -16, ID.Bar, handler));
             handler.removeObject(this);
         }

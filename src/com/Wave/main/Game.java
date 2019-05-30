@@ -1,7 +1,5 @@
 package com.Wave.main;
 
-import com.sun.codemodel.internal.JOp;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
@@ -10,7 +8,7 @@ import java.util.Random;
 public class Game extends Canvas implements Runnable {
 
     public static Dimension SCREEN_SIZE = Toolkit.getDefaultToolkit().getScreenSize();
-
+    public static int gameStage = 0;
 
     //public static final int WIDTH = (int) SCREEN_SIZE.getWidth(), HEIGHT = (int) SCREEN_SIZE.getHeight();
     public static final int WIDTH = 720, HEIGHT = WIDTH / 12 * 9;
@@ -23,6 +21,7 @@ public class Game extends Canvas implements Runnable {
 
     int Score = 0;
 
+
     Window window;
 
     public Game(){
@@ -33,6 +32,12 @@ public class Game extends Canvas implements Runnable {
 
         hud = new HUD();
 
+
+        //Stage one of the game-play
+        stageOne();
+    }
+
+    public void stageOne(){
         for (int i = 0; i < 5; i++) {
             handler.addObject(new enemy_Idiot(r.nextInt(WIDTH - 32), r.nextInt(HEIGHT - 32), ID.Idiot, handler));
         }
@@ -43,6 +48,24 @@ public class Game extends Canvas implements Runnable {
         handler.addObject(new enemy_BlastHorizontal(0, r.nextInt(HEIGHT - 50) + 50, ID.Idiot, handler));
         handler.addObject(new enemy_BlastVertical(r.nextInt(WIDTH - 50) + 50, 0, ID.Idiot, handler));
         handler.addObject(new enemy_BlastVertical(r.nextInt(WIDTH - 50) + 50, 0, ID.Idiot, handler));
+    }
+
+    public void stageTwo(){
+        for(int i = 0; i < handler.object.size(); i ++){
+            GameObject tempObject = handler.object.get(i);
+            System.out.println(tempObject);
+            if(tempObject.getID() != ID.Player){
+                handler.removeObject(tempObject);
+            }
+            if (handler.object.size() == 1) {
+                if(tempObject.getID() == ID.Player){
+                    gameStage++;
+                    //handler.addObject(new enemy_BlastVertical(tempObject.getX(), 0, ID.Idiot, handler));
+                    //handler.addObject(new enemy_BlastHorizontal(0, tempObject.getY(), ID.Idiot, handler));
+                }
+            }
+        }
+
     }
 
     public synchronized void start(){
@@ -57,7 +80,6 @@ public class Game extends Canvas implements Runnable {
         }catch(Exception e){
             e.printStackTrace();
         }
-        //Hello
     }
 
     public void run(){
@@ -90,6 +112,10 @@ public class Game extends Canvas implements Runnable {
                         "You Died",
                         JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
                 stop();
+            }
+            //If the player has passed ten bars go to stage two
+            if(gameStage == 1){
+                stageTwo();
             }
         }
         stop();
