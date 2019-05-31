@@ -35,6 +35,11 @@ public class Particle extends GameObject {
         g.fillRect(x, y, pDim, pDim);
     }
 
+    @Override
+    public void playerDeath() {
+
+    }
+
     public Rectangle getBounds() {
         return new Rectangle(x, y, pDim, pDim);
     }

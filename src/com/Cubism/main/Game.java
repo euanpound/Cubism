@@ -21,10 +21,11 @@ public class Game extends Canvas implements Runnable {
     private HUD hud;
     private Stage_Manager stage_manager;
 
+    private int deathTimer = -1;
+
     int Score = 0;
 
-
-    com.Cubism.main.Window window;
+    Window window;
 
     public Game(){
         handler = new Handler();
@@ -81,19 +82,32 @@ public class Game extends Canvas implements Runnable {
                 System.out.println("FPS:" + frames);
                 frames = 0;
             }
+            //TODO add a death animation
             if(HUD.HEALTH <= 0){
-                int input = JOptionPane.showOptionDialog(null, "Play again?", "You lost", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
-
-                if(input == JOptionPane.OK_OPTION)
-                {
-                    try {
-                        Runtime.getRuntime().exec("java -jar Cubism.jar");
-                    } catch (IOException e) {
-                        e.printStackTrace();
+                if(deathTimer == -1){
+                    deathTimer = 50;
+                }
+                for(int i = 0; i < handler.object.size(); i++){
+                    GameObject tempObject = handler.object.get(i);
+                    if(tempObject.getID() == ID.Player){
+                        tempObject.playerDeath();
                     }
-                    System.exit(0);
-                } else if(input == JOptionPane.CANCEL_OPTION){
-                    System.exit(0);
+                }
+                if (deathTimer == 0) {
+                    int input = JOptionPane.showOptionDialog
+                            (null, "Play again?", "You lost", JOptionPane.OK_CANCEL_OPTION,
+                                    JOptionPane.INFORMATION_MESSAGE, null, null, null);
+                    if(input == JOptionPane.OK_OPTION)
+                    {
+                        try {
+                            Runtime.getRuntime().exec("java -jar Cubism.jar");
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        System.exit(0);
+                    } else if(input == JOptionPane.CANCEL_OPTION){
+                        System.exit(0);
+                    }
                 }
             }
         }
@@ -107,6 +121,11 @@ public class Game extends Canvas implements Runnable {
             stage_manager.tick();
         } catch (Exception e) {
             e.printStackTrace();
+        }
+
+        if (deathTimer >= 1 && deathTimer <= 50) {
+            deathTimer--;
+            System.out.println(deathTimer);
         }
     }
 

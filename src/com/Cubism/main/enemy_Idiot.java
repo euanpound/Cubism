@@ -35,6 +35,11 @@ public class enemy_Idiot extends GameObject{
         g.fillRect(x, y, iDim, iDim);
     }
 
+    @Override
+    public void playerDeath() {
+
+    }
+
     public Rectangle getBounds(){
         return new Rectangle(x, y, iDim, iDim);
     }

@@ -31,6 +31,11 @@ public class enemy_Tracker extends GameObject{
         g.fillRect(x, y, tDim, tDim);
     }
 
+    @Override
+    public void playerDeath() {
+
+    }
+
     public Rectangle getBounds() {
         return new Rectangle(x, y, tDim, tDim);
     }

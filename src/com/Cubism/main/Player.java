@@ -1,12 +1,16 @@
 package com.Cubism.main;
 
+import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 import java.util.Random;
 
 public class Player extends GameObject {
 
+    //TODO Make the player flash red when hit, and make him lighter when invincible
+
     Handler handler;
-    private int j = 100;
+    private int j = 99;
 
     public static int pDim = 32;
 
@@ -44,11 +48,14 @@ public class Player extends GameObject {
             y += velY;
             handler.addObject(new Particle(r.nextInt(pDim - 10) + (x + pDim / 2) - pDim/2, r.nextInt(pDim - 10) + (y + pDim / 2) - pDim/2, ID.Particle, handler, 0, 0, 0));
         }
+
     }
 
     public void render(Graphics g) {
-        if(id == ID.Player) g.setColor(Color.black);
-        g.fillRect(x, y, pDim, pDim);
+        //if (deathTimer != 0) {
+            if(id == ID.Player) g.setColor(Color.black);
+            g.fillRect(x, y, pDim, pDim);
+        //}
     }
 
     public Rectangle getBounds(){
@@ -70,5 +77,14 @@ public class Player extends GameObject {
                 }
             }
         }
+    }
+    //Animate the player's death
+    public void playerDeath(){
+        for (int i = 0; i < 100; i ++) {
+            handler.addObject(new Particle(r.nextInt(pDim) + (x + pDim / 2) - pDim/2, r.nextInt(pDim) + (y + pDim / 2) - pDim/2, ID.Particle, handler, 255, 0, 0));
+
+        }
+        handler.removeObject(this);
+
     }
 }

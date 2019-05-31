@@ -42,6 +42,11 @@ public class enemy_Stage2_BlastVertical extends GameObject {
         }
     }
 
+    @Override
+    public void playerDeath() {
+
+    }
+
     public Rectangle getBounds() {
         if (timer <= 0) {
             return new Rectangle(x, 0, 25, Game.HEIGHT);

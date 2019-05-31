@@ -33,6 +33,11 @@ public class enemy_Bar extends GameObject{
         g.fillRect(Rand + Player.pDim + 32 + Rand2, y, Game.WIDTH - Rand - Player.pDim, 16);
     }
 
+    @Override
+    public void playerDeath() {
+
+    }
+
     public Rectangle getBounds() {
         return new Rectangle(0, y, Rand, 16);
     }

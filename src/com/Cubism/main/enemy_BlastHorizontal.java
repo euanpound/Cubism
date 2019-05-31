@@ -42,6 +42,11 @@ public class enemy_BlastHorizontal extends GameObject {
         }
     }
 
+    @Override
+    public void playerDeath() {
+
+    }
+
     public Rectangle getBounds() {
         if (timer <= 0) {
             return new Rectangle(0, y, Game.WIDTH, 25);

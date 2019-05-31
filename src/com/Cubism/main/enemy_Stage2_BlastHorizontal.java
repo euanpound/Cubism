@@ -42,6 +42,11 @@ public class enemy_Stage2_BlastHorizontal extends GameObject {
         }
     }
 
+    @Override
+    public void playerDeath() {
+        
+    }
+
     public Rectangle getBounds() {
         if (timer <= 0) {
             return new Rectangle(0, y, Game.WIDTH, 25);
@@ -64,6 +69,7 @@ public class enemy_Stage2_BlastHorizontal extends GameObject {
             }
         }
         if(counter == 0){
+            Game.gameStage++;
             handler.removeObject(this);
             for (int i = 0; i < handler.object.size(); i++) {
                 GameObject tempObject = handler.object.get(i);
