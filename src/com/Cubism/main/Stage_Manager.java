@@ -1,5 +1,7 @@
 package com.Cubism.main;
 
+import javax.swing.*;
+import java.io.IOException;
 import java.util.Random;
 
 public class Stage_Manager {
@@ -92,10 +94,27 @@ public class Stage_Manager {
                     }
                 }
                 if (handler.object.size() == 1) {
-                    allGone = true;
-                    stageOne();
-                    Game.amountOfTicks += 15;
-                    Game.gameStage = 0;
+                    if (Game.amountOfTicks <= 105){
+                        allGone = true;
+                        stageOne();
+                        Game.amountOfTicks += 15;
+                        Game.gameStage = 0;
+                    }else if(Game.amountOfTicks > 105){
+                        int input = JOptionPane.showOptionDialog
+                                (null, "Play again?", "You Won", JOptionPane.OK_CANCEL_OPTION,
+                                        JOptionPane.INFORMATION_MESSAGE, null, null, null);
+                        if(input == JOptionPane.OK_OPTION)
+                        {
+                            try {
+                                Runtime.getRuntime().exec("java -jar Cubism.jar");
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                            System.exit(0);
+                        } else if(input == JOptionPane.CANCEL_OPTION){
+                            System.exit(0);
+                        }
+                    }
                 }
             }
         }

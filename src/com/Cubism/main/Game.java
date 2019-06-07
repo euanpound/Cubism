@@ -83,7 +83,6 @@ public class Game extends Canvas implements Runnable {
                 System.out.println("FPS:" + frames);
                 frames = 0;
             }
-            //TODO add a death animation
             if(HUD.HEALTH <= 0){
                 if(deathTimer == -1){
                     deathTimer = 50;

@@ -72,7 +72,7 @@ public class Player extends GameObject {
             //Collide with enemy
             if(tempObject.getID() == (ID.Idiot) || tempObject.getID() == ID.Tracker || tempObject.getID() == ID.Bar || tempObject.getID() == ID.Blaster || tempObject.getID() == ID.Stage2_Blaster){
                 if(tempObject.getBounds().intersects(getBounds())) {
-                    //HUD.HEALTH--;
+                    HUD.HEALTH--;
                     j--;
                 }
             }
