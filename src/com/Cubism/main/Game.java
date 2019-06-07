@@ -10,6 +10,7 @@ public class Game extends Canvas implements Runnable {
 
     public static Dimension SCREEN_SIZE = Toolkit.getDefaultToolkit().getScreenSize();
     public static int gameStage = 0;
+    public static double amountOfTicks = 60.0;
 
     //public static final int WIDTH = (int) SCREEN_SIZE.getWidth(), HEIGHT = (int) SCREEN_SIZE.getHeight();
     public static final int WIDTH = 720, HEIGHT = WIDTH / 12 * 9;
@@ -58,14 +59,14 @@ public class Game extends Canvas implements Runnable {
     }
 
     public void run(){
+        System.out.println(amountOfTicks);
         this.requestFocus();
         long lastTime = System.nanoTime();
-        double amountOfTicks = 60.0;
-        double ns = 1000000000 / amountOfTicks;
         double delta = 0;
         long timer = System.currentTimeMillis();
         int frames = 0;
         while(running){
+            double ns = 1000000000 / amountOfTicks;
             long now = System.nanoTime();
             delta += (now - lastTime) / ns;
             lastTime = now;
@@ -125,7 +126,6 @@ public class Game extends Canvas implements Runnable {
 
         if (deathTimer >= 1 && deathTimer <= 50) {
             deathTimer--;
-            System.out.println(deathTimer);
         }
     }
 

@@ -72,7 +72,7 @@ public class Player extends GameObject {
             //Collide with enemy
             if(tempObject.getID() == (ID.Idiot) || tempObject.getID() == ID.Tracker || tempObject.getID() == ID.Bar || tempObject.getID() == ID.Blaster || tempObject.getID() == ID.Stage2_Blaster){
                 if(tempObject.getBounds().intersects(getBounds())) {
-                    HUD.HEALTH--;
+                    //HUD.HEALTH--;
                     j--;
                 }
             }
@@ -82,7 +82,6 @@ public class Player extends GameObject {
     public void playerDeath(){
         for (int i = 0; i < 100; i ++) {
             handler.addObject(new Particle(r.nextInt(pDim) + (x + pDim / 2) - pDim/2, r.nextInt(pDim) + (y + pDim / 2) - pDim/2, ID.Particle, handler, 255, 0, 0));
-
         }
         handler.removeObject(this);
 

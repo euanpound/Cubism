@@ -72,14 +72,33 @@ public class Stage_Manager {
         }
     }
 
-    public void tick(){
+    public void tick() {
         //If the player has passed ten bars go to stage two
-        if(Game.gameStage == 5){
+        if (Game.gameStage == 5) {
+            allGone = false;
             stageTwo();
         }
-        if(Game.gameStage == 20){
+        if (Game.gameStage == 20) {
             allGone = false;
             stageThree();
         }
+        if (Game.gameStage == 35) {
+            allGone = false;
+            for (int i = 0; i < handler.object.size(); i++) {
+                GameObject tempObject = handler.object.get(i);
+                if (!allGone) {
+                    if (tempObject.getID() != ID.Player) {
+                        handler.removeObject(tempObject);
+                    }
+                }
+                if (handler.object.size() == 1) {
+                    allGone = true;
+                    stageOne();
+                    Game.amountOfTicks += 15;
+                    Game.gameStage = 0;
+                }
+            }
+        }
     }
 }
+
