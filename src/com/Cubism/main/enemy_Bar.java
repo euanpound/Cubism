@@ -5,6 +5,7 @@ import java.util.Random;
 
 public class enemy_Bar extends GameObject{
 
+
     Handler handler;
     Random r = new Random();
     int Rand = r.nextInt(Game.WIDTH - 250);

@@ -3,6 +3,8 @@ package com.Cubism.main;
 import javax.swing.*;
 import java.awt.*;
 
+
+//OBSOLETE
 public class DeathWindow {
     public DeathWindow(int width, int height, String title, Game game){
         JFrame frame = new JFrame(title);
