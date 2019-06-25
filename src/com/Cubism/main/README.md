@@ -8,5 +8,5 @@
     * Trackers
     * Lasers
     
-![picture](img/Game Image 1.png)
+![Alt text](img/Game Image 1.png)
 
