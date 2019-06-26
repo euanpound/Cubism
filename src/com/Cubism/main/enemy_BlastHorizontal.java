@@ -5,23 +5,34 @@ import java.util.Random;
 
 public class enemy_BlastHorizontal extends GameObject {
 
+    //Variable declaration
+
+    //Inject Handler
     Handler handler;
+    //Random number
     Random r = new Random();
+    //Timer
     int timer = 250;
     boolean warn = false;
     boolean released = false;
 
     public enemy_BlastHorizontal(int x, int y, ID id, Handler handler) {
+        //Constructor
         super(x, y, id);
+        //Inject Handler
         this.handler = handler;
 
     }
 
+    //Tick method
     public void tick() {
+        //When the timer is over blast the particles
         if(timer == 0){
             handler.addObject(new enemy_BlastHorizontalParticles(x, y, ID.BlasterParticles, handler));
             timer--;
             released = true;
+
+        //Flashing the warning light for the laser
         } else if (timer % 50 == 0 && timer > 0){
             warn = true;
         } else if (timer % 10 == 0){
@@ -31,12 +42,14 @@ public class enemy_BlastHorizontal extends GameObject {
             timer--;
         }
         if(released){
+            //Check if any children classes exist
             angelSense();
         }
     }
 
     public void render(Graphics g) {
         if(warn){
+            //Show the red warning when needed
             g.setColor(Color.RED);
             g.fillRect(5, y, 20, 20);
         }
@@ -44,9 +57,10 @@ public class enemy_BlastHorizontal extends GameObject {
 
     @Override
     public void playerDeath() {
-
+        //Unnecessary
     }
 
+    //Returns a rectangle with the bounds of the object
     public Rectangle getBounds() {
         if (timer <= 0) {
             return new Rectangle(0, y, Game.WIDTH, 25);
@@ -59,6 +73,7 @@ public class enemy_BlastHorizontal extends GameObject {
         return null;
     }
 
+    //Checks for children classes (Specifically Particle children)
     public void angelSense(){
         int counter = 0;
         for(int i = 0; i < handler.object.size(); i++){

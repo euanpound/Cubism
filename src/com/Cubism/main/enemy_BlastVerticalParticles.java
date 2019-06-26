@@ -4,6 +4,8 @@ import java.awt.*;
 
 public class enemy_BlastVerticalParticles extends enemy_BlastVertical {
 
+    //Copy of enemy_BlastHorizontal
+
     boolean hasFired = false;
 
     enemy_BlastVertical parent;

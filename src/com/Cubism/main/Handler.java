@@ -6,6 +6,7 @@ import java.util.LinkedList;
 public class Handler {
     LinkedList<GameObject> object = new LinkedList<GameObject>();
 
+    //Tick all GameObjects
     public void tick(){
         for(int i = 0; i < object.size(); i++){
             GameObject  tempObject= object.get(i);
@@ -14,6 +15,7 @@ public class Handler {
 
     }
 
+    //Render all GameObjects
     public void render(Graphics g){
         for(int i = 0; i < object.size(); i++){
             GameObject tempObject = object.get(i);

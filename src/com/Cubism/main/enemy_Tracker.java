@@ -5,6 +5,7 @@ import java.util.Random;
 
 public class enemy_Tracker extends GameObject{
 
+    //Inject Handler
     Handler handler;
     private Random r = new Random();
 
@@ -14,6 +15,7 @@ public class enemy_Tracker extends GameObject{
 
     public enemy_Tracker(int x, int y, ID id, Handler handler) {
         super(x, y, id);
+        //Inject Handler
         this.handler = handler;
     }
 

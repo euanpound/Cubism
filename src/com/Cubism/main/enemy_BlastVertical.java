@@ -5,6 +5,8 @@ import java.util.Random;
 
 public class enemy_BlastVertical extends GameObject {
 
+    //Copy of enemy_BlastHorizontal
+
     Handler handler;
     Random r = new Random();
     int timer = 250;

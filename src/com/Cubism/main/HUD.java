@@ -9,6 +9,7 @@ public class HUD {
     public void tick(){
 
     }
+
     public void render(Graphics g){
         g.setColor(Color.darkGray);
         g.fillRect(15, 15, 200, 32);
@@ -17,6 +18,7 @@ public class HUD {
         //g.setColor(Color.darkGray);
         //g.fillRect(15, (Game.HEIGHT - 15), 200, 32);
     }
+    //Return rectangle with the dimensions of the HUD
     public static Rectangle getBounds(){
         return new Rectangle(15, 15, 200, 32);
     }

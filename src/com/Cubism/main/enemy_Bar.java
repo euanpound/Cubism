@@ -6,6 +6,8 @@ import java.util.Random;
 public class enemy_Bar extends GameObject{
 
 
+    //Copy of enemy_BlastHorizontal
+
     Handler handler;
     Random r = new Random();
     int Rand = r.nextInt(Game.WIDTH - 250);

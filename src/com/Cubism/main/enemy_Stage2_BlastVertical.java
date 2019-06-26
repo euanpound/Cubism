@@ -5,6 +5,8 @@ import java.util.Random;
 
 public class enemy_Stage2_BlastVertical extends GameObject {
 
+    //Same as BlastHorizontal
+
     Handler handler;
     Random r = new Random();
     int timer = 50 - Game.gameStage;

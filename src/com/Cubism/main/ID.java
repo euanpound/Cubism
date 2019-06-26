@@ -1,6 +1,8 @@
 package com.Cubism.main;
 
 public enum ID {
+
+    //All entity IDs
     Player(),
     Idiot(),
     Particle(),

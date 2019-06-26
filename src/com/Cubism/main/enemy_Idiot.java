@@ -5,6 +5,7 @@ import java.util.Random;
 
 public class enemy_Idiot extends GameObject{
 
+    //Inject Handler
     Handler handler;
 
     private int iDim = 16;
@@ -14,10 +15,12 @@ public class enemy_Idiot extends GameObject{
         super(x, y, id);
         velX = r.nextInt(3) + 2;
         velY = r.nextInt(3) + 2;
+        //Inject Handler
         this.handler = handler;
     }
 
     public void tick() {
+        //Move the object
         x += velX;
         y += velY;
 
@@ -30,6 +33,7 @@ public class enemy_Idiot extends GameObject{
         //tracking();
     }
 
+    //Render the object
     public void render(Graphics g) {
         if(id == ID.Idiot) g.setColor(Color.red);
         g.fillRect(x, y, iDim, iDim);
@@ -40,6 +44,7 @@ public class enemy_Idiot extends GameObject{
 
     }
 
+    //Return rectangle
     public Rectangle getBounds(){
         return new Rectangle(x, y, iDim, iDim);
     }
