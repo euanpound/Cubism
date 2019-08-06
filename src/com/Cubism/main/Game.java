@@ -20,7 +20,7 @@ public class Game extends Canvas implements Runnable {
     //Game thread
     private Thread thread;
     //Running boolean to stop and start the game
-    private boolean running = true;
+    private boolean running;
     private Random r = new Random();
     private int deathTimer = -1;
 
@@ -39,14 +39,16 @@ public class Game extends Canvas implements Runnable {
 
         window = new Window(WIDTH, HEIGHT, "WAVE!", this);
 
-        hud = new HUD();
-        stage_manager = new Stage_Manager(handler);
-
         //Player
         handler.addObject(new Player(Game.WIDTH / 2 - 16, Game.HEIGHT / 2 - 16, ID.Player, handler));
 
+        hud = new HUD(handler);
+        stage_manager = new Stage_Manager(handler);
+        System.out.println("test");
+
         //Stage one of the game-play
         stage_manager.stageOne();
+        start();
     }
 
     public synchronized void start(){
@@ -135,7 +137,6 @@ public class Game extends Canvas implements Runnable {
 
     private void tick(){
         handler.tick();
-        hud.tick();
         try {
             stage_manager.tick();
         } catch (Exception e) {

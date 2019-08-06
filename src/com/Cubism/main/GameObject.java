@@ -48,4 +48,7 @@ public abstract class GameObject {
     public int getVelY(){
         return velY;
     }
+    public Object getThis(){
+        return this;
+    }
 }
